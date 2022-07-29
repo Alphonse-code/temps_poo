@@ -1,21 +1,26 @@
 <?php
-    if (isset($_POST['mail']) && isset($_POST['psw'])) {
-        $user = new App\Classe\Users();
-        $result = App\Classe\Users::findByEmail($_POST['mail']);
-        if (isset($result)) {
-            $user->setEmail($result->mail);
-            $user->setPassword($result->psw);
-            if (MD5($_POST['psw'])== $user->getPassword()) {
-                $_SESSION['user'] = [
-                    'id' => $result->id_user,
-                    'nom' => $user->getNom()
-                ];
-                header("location:Index.php?p=home");
-            } else {
-                $errors = "Nom d'utilisateur ou mot de passe incorrect.";
-            }
+ini_set('display_errors', '1');
+error_reporting(E_ALL);
+
+if (isset($_POST['mail']) && isset($_POST['psw'])) {
+    $user = new App\Table\User();
+    $result = App\Table\User::findByEmail($_POST['mail']);
+    var_dump($result);
+    if (isset($result)) {
+        $user->setEmail($result->mail);
+        $user->setPassword($result->psw);
+        if (MD5($_POST['psw']) == $user->getPassword()) {
+            $_SESSION['user'] = [
+                'id' => $result->id_user,
+                'nom' => $user->getNom(),
+            ];
+            header('location:Index.php?p=home');
+        } else {
+            $errors = "Nom d'utilisateur ou mot de passe incorrect.";
         }
     }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,15 +45,16 @@
                         </div>
                             <form method="POST" id="pro-login" class="form-responsive" >
                             <label>E-mail</label>
-                                <input type="text" placeholder="Adresse email" value="<?php echo $_POST[
-                                    'mail'
-                                ]; ?>" name="mail" class="form-control"/><br/>
+                                <input type="text" placeholder="Adresse email" name="mail" class="form-control"/><br/>
                             <div>
                                 <label>Mot de passe</label>
-                                    <input type="password" name="psw" value="<?php echo $_POST[
-                                        'psw'
-                                    ]; ?>" class="form-control" placeholder="Mot de passe"/><br/>      
+                                    <input type="password" name="psw" class="form-control" placeholder="Mot de passe"/><br/>      
                             </div>
+                             <?php if (!empty($errors)): ?>
+                                 <div class="text text-danger">
+                                    <?= $errors ?>
+                                 </div>
+                            <?php endif; ?>
                             <button type="submit" name="login" class="btn mt-2 w-100 btn-connexion " id="log">Se connecter </button>  
                         </form>
                     </div>

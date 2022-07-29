@@ -16,11 +16,14 @@ if (isset($_GET['p'])) {
     $p = $_GET['p'];
 } else {
     $p = 'home';
+    echo $p;
 }
-
+echo $p;
 ob_start();
 if ($p === 'home') {
     require ROOT . '/page/home.php';
+} elseif ($p === 'login') {
+    require ROOT . '/page/login.php';
 } elseif ($p === 'list_projet') {
     require ROOT . '/page/list_projet.php';
 }
