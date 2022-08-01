@@ -1,8 +1,10 @@
 <?php
 namespace App\Table;
+use App\App;
 
 class User extends Table
 {
+    private $id_user;
     private $nom;
     private $prenom;
     private $email;
@@ -11,7 +13,9 @@ class User extends Table
     private $salaire;
     private $psw;
 
-   
+    public function getIdUser() {
+        return $this->id_user;
+    }
     public function getNom(): ?string
     {
         return $this->nom;
@@ -67,20 +71,19 @@ class User extends Table
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getPsw(): ?string
     {
-        return $this->password;
+        return $this->psw;
     }
 
-    public function setPassword($psw): self
+    public function setPsw($psw): self
     {
         $this->psw = $psw;
         return $this;
     }
 
     public static function findByEmail($mail) {
-        return App::getDb()->query('SELECT * FROM `tmp_users` 
-            WHERE mail LIKE ("'.$mail.'");',  __CLASS__, true);
+        return App::getDb()->query('SELECT * FROM `tmp_users` WHERE mail LIKE ("'.$mail.'");',  __CLASS__, true);
     }
 
     public static function findByUserId($id_user)

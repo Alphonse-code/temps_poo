@@ -4,23 +4,25 @@ error_reporting(E_ALL);
 
 if (isset($_POST['mail']) && isset($_POST['psw'])) {
     $user = new App\Table\User();
-    $result = App\Table\User::findByEmail($_POST['mail']);
-    var_dump($result);
+    try {
+        $result = App\Table\User::findByEmail($_POST['mail']);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
     if (isset($result)) {
-        $user->setEmail($result->mail);
-        $user->setPassword($result->psw);
-        if (MD5($_POST['psw']) == $user->getPassword()) {
+        $user->setEmail($result->getEmail());
+        $user->setPsw($result->getPsw());
+        if (MD5($_POST['psw']) == $user->getPsw()) {
             $_SESSION['user'] = [
-                'id' => $result->id_user,
+                'id' => $result->getIdUser(),
                 'nom' => $user->getNom(),
             ];
-            header('location:Index.php?p=home');
+            header('location:Route.php?p=home');
         } else {
             $errors = "Nom d'utilisateur ou mot de passe incorrect.";
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">

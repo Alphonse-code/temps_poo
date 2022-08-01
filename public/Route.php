@@ -16,10 +16,10 @@ if (isset($_GET['p'])) {
     $p = $_GET['p'];
 } else {
     $p = 'home';
-    echo $p;
+    
 }
-echo $p;
-ob_start();
+
+ob_start(); // démarre la temporisation de sortie
 if ($p === 'home') {
     require ROOT . '/page/home.php';
 } elseif ($p === 'login') {
