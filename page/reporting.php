@@ -15,9 +15,9 @@
         <!-- Theme style -->
         <!-- Theme style -->
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.css" integrity="sha512-y4S4cBeErz9ykN3iwUC4kmP/Ca+zd8n8FDzlVbq5Nr73gn1VBXZhpriQ7avR+8fQLpyq4izWm0b8s6q4Vedb9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js" integrity="sha512-7x7HoEikRZhV0FAORWP+hrUzl75JW/uLHBbg2kHnPdFmScpIeHY0ieUVSacjusrKrlA/RsA2tDOBvisFmKc3xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js" integrity="sha512-7x7HoEikRZhV0FAORWP+hrUzl75JW/uLHBbg2kHnPdFmScpIeHY0ieUVSacjusrKrlA/RsA2tDOBvisFmKc3xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
     </head>
     <body>
@@ -82,29 +82,7 @@
                           <h3 class="text-center"> Liste des utilisateur par date et temps presté</h3> 
                         </div>
                         <div class="panel-body">
-                            <?php
-                            $sql = 'SELECT
-                                        tmp_users.nom,
-                                        tmp_users.prenom,
-                                        tmp_prestation.id_user,
-                                        tmp_prestation.date,
-                                        SUM(tmp_prestation.total_minute) AS temp_preste,
-                                        tmp_projets.nom AS nom_projet,
-                                        SUM(
-                                            tmp_prestation.depense_supplementaire
-                                        ) AS depense_sup
-                                    FROM
-                                        tmp_prestation
-                                    INNER JOIN tmp_users ON tmp_prestation.id_user = tmp_users.id_user
-                                    INNER JOIN tmp_projets ON tmp_prestation.id_prj = tmp_projets.id_prj
-                                    GROUP BY
-                                        tmp_prestation.date and  tmp_users.nom, tmp_users.prenom
-                                    ORDER BY
-                                        tmp_prestation.date';
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) { ?>
-                            
-                               
+                           
                             <table id="tbticket" class="table table-responsive">
                                 <thead>  
                                     <tr>
@@ -117,44 +95,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   <?php while (
-                                       $row = mysqli_fetch_array($result)
-                                   ) { ?>
-                                        <tr>
-                                            <td><?php echo $row[
-                                                'id_user'
-                                            ]; ?> </td>
-                                               <td><?php echo $row['nom'] .
-                                                   ' ' .
-                                                   $row['prenom']; ?> </td>
-                                            <td><?php echo $row[
-                                                'date'
-                                            ]; ?> </td>
-                                           
-                                               <td><?php echo $row[
-                                                   'temp_preste'
-                                               ]; ?> </td>
-                                               <td><?php echo $row[
-                                                   'nom_projet'
-                                               ]; ?> </td>
-                                               <td><?php echo $row[
-                                                   'depense_sup'
-                                               ]; ?> </td>
-                                            
+                                    <?php $list = App\Table\Prestation::list_user_temps(); 
+                                    
+                                    if (!empty($list)): ?>
+                                        <?php foreach($list as $li): ?>  
+                                     <tr>
+                                        <td><?= $li->id_user ?> </td>
+                                        <td><?= $li->users ?> </td>
+                                        <td><?= $li->date ?> </td>     
+                                        <td><?= $li->temp_preste ?> </td>
+                                        <td><?= $li->nom_projet?> </td>
+                                        <td><?= $li->depense_sup ?> </td>
                                         </tr>
-                                  <?php } ?>
+                                         <?php endforeach; ?>
+                                  <?php endif; ?>
                                 </tbody>
                             </table>
-                            <?php }
-                            ?>
-
                         </div>
                     </div>
                 </div>
-                
             </div><!--/.row-->	
-
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -162,21 +122,7 @@
                           <h3 class="text-center"> Nombre de minutes presté par user par projet</h3> 
                         </div>
                         <div class="panel-body">
-                           <?php
-                           $sql = 'SELECT
-                                tmp_projets.nom AS nom_prj,
-                                tmp_users.nom,
-                                tmp_users.prenom,
-                                SUM(tmp_prestation.total_minute) AS total_minute
-                            FROM
-                                tmp_prestation
-                                INNER JOIN tmp_projets ON tmp_prestation.id_prj=tmp_projets.id_prj
-                                INNER JOIN tmp_users ON tmp_prestation.id_user=tmp_users.id_user
-                            GROUP BY(tmp_prestation.id_prj)';
-                           $result = mysqli_query($conn, $sql);
-                           ?>
-                            
-                                <?php if (mysqli_num_rows($result) > 0) { ?>
+                          
                                 <table id="minute" class="table table-responsive">
                                 <thead>  
                                     <tr>
@@ -186,26 +132,19 @@
                                     </tr>
                                 </thead>
                                  <tbody>  
-                                   
-                                   <?php while (
-                                       $row = mysqli_fetch_array($result)
-                                   ) { ?>
+                                    <?php $nombre = App\Table\Prestation::temps_prest_projet(); 
+                                    
+                                    if (!empty($nombre)): ?>
+                                        <?php foreach($nombre as $nb): ?> 
                                         <tr>
-                                            <td><?php echo $row[
-                                                'nom_prj'
-                                            ]; ?> </td>
-                                               <td><?php echo $row['nom'] .
-                                                   ' ' .
-                                                   $row['prenom']; ?> </td>
-                                            <td><?php echo $row[
-                                                'total_minute'
-                                            ]; ?> </td>   
+                                            <td><?= $nb->nom_prj ?></td>
+                                            <td><?= $nb->users ?></td>
+                                            <td><?= $nb->total_minute ?></td>   
                                         </tr>
-                                  <?php } ?>
+                                        <?php endforeach; ?>
+                                        <?php endif; ?>
                                 </tbody>
                             </table>
-                            <?php } ?>    
-
                         </div>
                     </div>
                 </div>
@@ -254,49 +193,11 @@
             });
             
         </script>
-        <script type="text/javascript">
-    $(document).ready(function(){
-        $('.delete').click(function(){
-            $(document).ready(function(){
-
-                $(document).on('click', '.delete', function(){
-                    var id = $(this).data('id');
-                  //  console.log(id);
-                    swal.fire({
-                        title: 'Êtes-vous sûr?',
-                        text: "Vous ne pourrez pas revenir en arrière !",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Oui, supprimez-le !',
-                    }).then((result) => {
-                        if (result.value){
-                            $.ajax({
-                                url: 'delete_projet.php',
-                                type: 'POST',
-                                data: {id_prj:id},
-                                dataType: 'json'
-                            })
-                            .done(function(response){
-                                swal.fire('Deleted!', response.message, response.status);
-                            })
-                            .fail(function(){
-                                swal.fire('Oops...', 'Quelque chose s\'est mal passé !', 'error');
-                            });
-                        }
-                    })
-                });
-            });
-        });
-    });
-
-    
-</script>
+        
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
-			url : "data.php",
+			url : "http://localhost/temps_poo/public/Route.php?p=data",
 			dataType : "JSON",
 			success : function(result) {
                 
@@ -332,7 +233,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
-			url : "data3.php",
+			url : "../page/data3.php",
 			dataType : "JSON",
 			success : function(result) {
                 

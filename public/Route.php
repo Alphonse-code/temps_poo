@@ -39,6 +39,8 @@ if ($p === 'home') {
     require ROOT . '/page/list_users.php';
 } elseif ($p == 'reporting') {
     require ROOT . '/page/reporting.php';
+} elseif ($p == 'timer') {
+    require ROOT . '/page/timer.php';
 }
 
 $content = ob_get_clean();

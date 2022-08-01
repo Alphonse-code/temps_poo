@@ -2,7 +2,22 @@
 
 if (empty($_SESSION['user'])) {
     header('location:Route.php?p=login');
-} ?>
+} 
+
+if(isset($_POST['save'])) {
+    session_start();
+    date_default_timezone_set('Europe/Paris');
+    $id_prj = $_POST['id_prj'];
+    $id_user = $_SESSION['user']['id'];
+    $_SESSION['user']['id_prj'] = $id_prj;
+    $date = date('Y-m-d');
+    $heure_debut = date('H:i:s');
+    App\Table\Prestation::insert_heur_debut($date, $id_user, $id_prj, $heure_debut);
+
+    header('location:Route.php?p=timer&heure_debut='.$heure_debut.'&id_prj='.$id_prj);
+
+}
+?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <div class="row">
                 <ol class="breadcrumb">
