@@ -27,6 +27,16 @@ class User extends Table
         return $this;
     }
 
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom($prenom): self
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
     public function getEmail(): ?string
     {
         return $this->email;

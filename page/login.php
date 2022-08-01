@@ -9,13 +9,16 @@ if (isset($_POST['mail']) && isset($_POST['psw'])) {
     } catch (Exception $e) {
         echo $e->getMessage();
     }
+    
     if (isset($result)) {
         $user->setEmail($result->getEmail());
         $user->setPsw($result->getPsw());
         if (MD5($_POST['psw']) == $user->getPsw()) {
             $_SESSION['user'] = [
                 'id' => $result->getIdUser(),
-                'nom' => $user->getNom(),
+                'nom' => $result->getNom(),
+                'prenom' => $result->getPrenom(),
+                'level' => $result->getLevel(),
             ];
             header('location:Route.php?p=home');
         } else {

@@ -1,9 +1,9 @@
-
+ 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>TEMPS | PROJET</title>
+        <title>TEMPS | USERS</title>
 
          <link rel="shortcut icon" href="./images/temps.png" type="image/x-icon">
     
@@ -20,12 +20,11 @@
 
         </head>
     <body>
-     
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+ <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <div class="row">
                 <ol class="breadcrumb">
                     <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
-                    <li class="active">Projet</li>
+                    <li class="active">Utilisateur</li>
                 </ol>
             </div><!--/.row-->
             <div class="row">
@@ -40,7 +39,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header text text-center">Liste des projet</h3>
+                    <h3 class="page-header text text-center">Liste des utilisateurs</h3>
                 </div>
             </div><!--/.row-->
 
@@ -48,48 +47,51 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="./form_projet.php">Créer projet</a>
+                            <a class="btn btn-primary" href="./form_user.php">Ajouté</a>
                         </div>
                         <div class="panel-body">
-                         
+                           
                             <table id="tbticket" class="table table-responsive">
                                 <thead>  
-                                    <tr>
+                                     <tr>
                                         <th>ID</th>
-                                        <th>Nom projet</th>
-                                        <th>Localisation</th>  
-                                        <th>Date début</th>
-                                        <th>Date fin</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>E-mail</th>
+                                        <th>Level</th>
+                                        <th>Téléphone</th>
                                         <th class="text text-center"> Action</th>
                                     </tr>
                                 </thead>
-                                <tbody> 
-                                    <?php $list_prj = App\Table\Projet::listProjects(); 
-                                    
-                                    if (!empty($list_prj)): ?>
-                                        <?php foreach($list_prj as $prj): ?>   
-                                    <tr>
-                                        <td><?= $prj->id_prj; ?></td>
-                                        <td><?= $prj->nom; ?></td>
-                                        <td><?= $prj->localisation; ?></td>
-                                        <td><?= $prj->date_debut; ?></td>
-                                        <td><?= $prj->date_fin_reel; ?></td>
-                                        <td class="text text-center">
-                                            <a href="update_projet.php?id=<?php echo $row[
-                                                    'id_prj'
-                                                ]; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
-                                                <a href="delete_projet.php?id=<?php echo $row[
-                                                    'id_prj'
-                                                ]; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
+                                <tbody>  
+                                     <?php
+                                     $list_users = App\Table\User::listUsers();
 
-                                               <!--  <button class='delete btn btn-danger btn-sm glyphicon glyphicon-trash' data-id='<?php echo $row[
-                                                   'id_prj'
-                                               ]; ?>' ></button> -->
-                       
+                                     if (!empty($list_users)): ?>
+                                        <?php foreach (
+                                            $list_users
+                                            as $user
+                                        ): ?>  
+                                   
+                                    <tr>
+                                        <td><?= $user->id_user ?></td>
+                                        <td><?= $user->nom ?></td>
+                                        <td><?= $user->prenom ?></td>
+                                        <td><?= $user->mail ?></td>
+                                        <td><?= $user->level ?></td>
+                                        <td><?= $user->tel ?></td>
+                                        <td class="text text-center">
+                                                <a href="update_user.php?id=<?php echo $row[
+                                                    'id_user'
+                                                ]; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                                <a href="delete_user.php?id=<?php echo $row[
+                                                    'id_user'
+                                                ]; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
                                             </td>
                                         </tr>
-                                        <?php endforeach; ?>
-                                        <?php endif; ?>
+                                         <?php endforeach; ?>
+                                  <?php endif;
+                                     ?>
                                 </tbody>
                             </table>
                         </div>
@@ -97,8 +99,7 @@
                 </div>
             </div><!--/.row-->	
         </div><!--/.main-->
-
-        <script src="../public/js/jquery-1.11.1.min.js"></script>
+          <script src="../public/js/jquery-1.11.1.min.js"></script>
         <script src="../public/js/bootstrap.min.js"></script>
         <script src="../public/js/bootstrap-datepicker.js"></script>
         <script src="../public/js/bootstrap-table.js"></script>
@@ -116,14 +117,13 @@
         <script src="../public/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
         <script src="../public/plugins/datatables-buttons/js/buttons.print.min.js"></script>
         
-        <script>
-            $(function () {
-                $("#tbticket").DataTable({
-                    "responsive": true, "lengthChange": false, "autoWidth": false,
-                    "buttons": ["excel", "pdf"]
-                }).buttons().container().appendTo('#tbticket_wrapper .col-md-6:eq(0)');
-            });
-        </script>
-        
-    </body>
+ <script>
+     $(function () {
+      $("#tbticket").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+       "buttons": ["excel", "pdf"]
+       }).buttons().container().appendTo('#tbticket_wrapper .col-md-6:eq(0)');
+     });
+</script>
+</body>
 </html>

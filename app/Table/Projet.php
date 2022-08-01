@@ -1,6 +1,6 @@
 <?php
 namespace App\Table;
-
+use App\App;
 class Projet extends Table
 {
     private $id_prj;
@@ -79,4 +79,12 @@ class Projet extends Table
      {
         App::getDb()->query('DELETE  FROM tmp_users WHERE id_user="'.$id_user.'"');
     }
+
+    public static function listProjects()
+    {
+        return App::getDb()->query('SELECT * FROM tmp_projets');
+    }
+
+    
+    
 }
