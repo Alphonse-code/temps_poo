@@ -41,7 +41,7 @@ setlocale(LC_ALL, 'fr_FR');
                 </div>
             </div><!-- /.container-fluid -->
         </nav>
-
+        
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar ">
                 <ul class="nav menu">
                     <li><img src="images/temps.png" width="250px" height="100px" alt="TEMPS"/> </li>
@@ -59,7 +59,7 @@ setlocale(LC_ALL, 'fr_FR');
                     <li><a href="Route.php?p=list_users"><span class="glyphicon glyphicon-user"></span>UTILISATEUR</a></li>
                     <li><a href="Route.php?p=reporting"><span class="	glyphicon glyphicon-indent-right"></span>STATISTIQUES</a></li>
                     <?php } ?>
-    </div><!--/.sidebar-->  
+    </div> <!--/.sidebar-->  
 
         <?php endif; ?>
         <?= $content ?>

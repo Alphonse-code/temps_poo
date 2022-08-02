@@ -50,4 +50,14 @@ class Avantage extends Table
         App::getDb()->query("UPDATE `tmp_avantage` SET `nom_avantage` = $nom_avantage, `motant_avantage` = $motant_avantage WHERE `id_avantage` = $id_avantage");
     }
 
+    public static function somme_avantage($id_user)
+    {
+        $som_avtg =
+        "SELECT SUM(montant_avantage) total,usr.id_user from  tmp_avantage_user usr
+        inner join  tmp_users t_us on t_us.id_user=usr.id_user
+        inner join   tmp_avantage tmp_av  on tmp_av.id_avantage=usr.id_avantage
+        WHERE usr.id_user=" . $id_user;
+        return App::getDb()->query($som_avtg);
+    }
+
 }

@@ -13,16 +13,15 @@ function getNotification() {
 	if (Notification.permission !== "granted") {		
 		Notification.requestPermission();
 	} else {	
-			
 		$.ajax({
-			url : "notification.php",
+			url : "url.php",
 			type: "POST",
 			success: function(response, textStatus, jqXHR) {
 				
 				var response = jQuery.parseJSON(response);
 				if(response.result == true) {
 					var notificationDetails = response.notif;
-					// console.log("Notification details: " + JSON.stringify(notificationDetails));
+					 console.log("Notification details: " + JSON.stringify(notificationDetails));
 					for (var i = notificationDetails.length - 1; i >= 0; i--) {
 						var notificationUrl = notificationDetails[i]['url'];
 						var notificationObj = new Notification(notificationDetails[i]['title'], {

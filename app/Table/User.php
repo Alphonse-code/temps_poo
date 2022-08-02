@@ -112,6 +112,10 @@ class User extends Table
             'SELECT `id_user`, `nom`, `prenom`, `mail`, `level`, `tel`, `salaire`, `psw` FROM `tmp_users`';
         return App::getDb()->query($sql);
     }
+    public static function list_utilisateur(){		
+		$sql ="SELECT * FROM tmp_users WHERE level = '2'";
+        return App::getDb()->query($sql);
+	}	
 
     public static function updateUserInfo($id_user,$nom,$prenom,$mail,$level,$tel,$salaire) 
     {
@@ -131,5 +135,9 @@ class User extends Table
         App::getDb()->query('DELETE  FROM tmp_users WHERE id_user="'.$id_user.'"');
     }
     
+    public static function getSalaireById($id_user) 
+    { 
+       return App::getDb()->query("SELECT salaire FROM tmp_users WHERE id_user = '$id_user'");
+    }
 
 }

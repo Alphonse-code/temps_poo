@@ -13,8 +13,8 @@ if(isset($_POST['save'])) {
     $date = date('Y-m-d');
     $heure_debut = date('H:i:s');
     App\Table\Prestation::insert_heur_debut($date, $id_user, $id_prj, $heure_debut);
-
-    header('location:Route.php?p=timer&heure_debut='.$heure_debut.'&id_prj='.$id_prj);
+    
+    header('location:Route.php?p=timer&hd='.$heure_debut.'&id_prj='.$id_prj);
 
 }
 ?>

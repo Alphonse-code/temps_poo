@@ -42,6 +42,9 @@ if ($p === 'home') {
 } elseif ($p == 'timer') {
     require ROOT . '/page/timer.php';
 }
+elseif ($p == 'notif'){
+    require ROOT . '/public/notification.php';
+}
 
 $content = ob_get_clean();
 require '../page/templates/layout.php';
