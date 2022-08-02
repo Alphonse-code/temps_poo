@@ -197,7 +197,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
-			url : "http://localhost/temps_poo/public/Route.php?p=data",
+			url : "url.php?p=data",
 			dataType : "JSON",
 			success : function(result) {
                 
@@ -233,7 +233,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.ajax({
-			url : "../page/data3.php",
+			url : "url.php?p=data3",
 			dataType : "JSON",
 			success : function(result) {
                 
@@ -270,14 +270,15 @@
 <!-- recherche deux date  -->
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#recherche_date").click(function(){    
+        $("#recherche_date").click(function(){   
+           
            $.ajax({
-             url: 'data2.php', 
+             url: 'url.php?p=data2', 
              dataType : "JSON",
              type:"POST",
              data: {datedebut: $("#d_debut").val(), datefin: $("#d_fin").val()},
              success: function(data){
-              //  console.log(data);
+               // console.log(data);
                google.charts.load('current', {
 					'packages' : [ 'corechart' ]
 				});

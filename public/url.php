@@ -21,6 +21,12 @@ if (isset($_GET['p'])) {
 ob_start(); // démarre la temporisation de sortie
 if ($p == 'notif') {
     require ROOT . '/public/notification.php';
+} elseif ($p == 'data') {
+    require ROOT . '/public/data.php';
+} elseif ($p == 'data2') {
+    require ROOT . '/public/data2.php';
+} elseif ($p == 'data3') {
+     require ROOT . '/public/data3.php';
 }
 
 $content = ob_get_clean();

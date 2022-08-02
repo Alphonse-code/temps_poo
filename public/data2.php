@@ -5,6 +5,7 @@ use App\App;
 
 $date_deb = $_POST['datedebut'];
 $date_final = $_POST['datefin'];
+
 $sql = "SELECT
    CONCAT(tmp_users.nom, tmp_users.prenom) as users,
     SUM(tmp_prestation.total_minute) AS total_minute
