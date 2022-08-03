@@ -25,7 +25,14 @@ if ($p === 'home') {
     require ROOT . '/page/login.php';
 } elseif ($p === 'list_projet') {
     require ROOT . '/page/list_projet.php';
-} elseif ($p == 'logout') {
+} elseif ($p === 'new_projet') {
+    require ROOT . '/page/new_projet.php';
+} elseif ($p === 'edit_projet') {
+    require ROOT . '/page/edit_projet.php';
+}elseif ($p === 'delete_projet') {
+    require ROOT . '/page/delete_projet.php';
+}
+elseif ($p == 'logout') {
     require ROOT . '/page/logout.php';
 } elseif ($p == 'u_avantage') {
     require ROOT . '/page/avantage.php';

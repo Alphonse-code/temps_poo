@@ -24,14 +24,14 @@ class Projet extends Table
         $this->nom = $nom;
         return $this;
     }
-    public function getLocalications()
+    public function getLocalisation()
     {
-        return $this->localications;
+        return $this->localisation;
     }
 
-    public function setLocalications($localications): self
+    public function setLocalisation($localisation): self
     {
-        $this->localications = $localications;
+        $this->localisation = $localisation;
         return $this;
     }
 
@@ -47,23 +47,27 @@ class Projet extends Table
 
     public function getDateFin()
     {
-        return $this->date_fin;
+        return $this->date_fin_reel;
+    }
+    public function getDateFinTheorique()
+    {
+        return $this->date_fin_theorique;
     }
 
-    public function setDateFin($date_fin): self
+    public function setDateFin($date_fin_reel): self
     {
-        $this->date_fin = $date_fin;
+        $this->date_fin_reel = $date_fin_reel;
         return $this;
     }
 
     public static function findByProjectId($id_prj)
     {
-        return App::getDb()->query('SELECT * FROM `tmp_projet` WHERE `id_prj` =' . $id_prj, __CLASS__, true);
+        return App::getDb()->query('SELECT * FROM `tmp_projets` WHERE `id_prj` =' . $id_prj, __CLASS__, true);
     }
     public static function createProject($nom,$localisation,$date_debut,$date_fin_theorique,$date_fin_reel)
     {
-        $sql = "INSERT INTO `tmp_projets`(`id_prj`, `nom`, `localisation`, `date_debut`, `date_fin_theorique`, `date_fin_reel`, `statut`) 
-        VALUES (null,'$nom','$localisation','$date_debut','$date_fin_theorique','$date_fin_reel',null)";
+        $sql = "INSERT INTO `tmp_projets`(`nom`, `localisation`, `date_debut`, `date_fin_theorique`, `date_fin_reel`) 
+        VALUES ('$nom','$localisation','$date_debut','$date_fin_theorique','$date_fin_reel')";
          App::getDb()->query($sql);
     }
 
@@ -77,7 +81,7 @@ class Projet extends Table
 
      public static function deleteProject($id_prj) 
      {
-        App::getDb()->query('DELETE  FROM tmp_users WHERE id_user="'.$id_user.'"');
+        App::getDb()->query('DELETE  FROM tmp_projets WHERE id_prj="'.$id_prj.'"');
     }
 
     public static function listProjects()

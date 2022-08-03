@@ -35,6 +35,7 @@ if (isset($_POST['mail']) && isset($_POST['psw'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEMPS | AUTHENTIFICATION</title>
     <link href="../public/css/bootstrap_5.min.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/login.css">
     <link rel="shortcut icon" href="../public/images/temps.png" type="image/x-icon">
 </head>

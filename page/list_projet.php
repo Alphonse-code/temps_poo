@@ -48,7 +48,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="./form_projet.php">Créer projet</a>
+                            <a class="btn btn-primary" href="Route.php?p=new_projet">Créer projet</a>
                         </div>
                         <div class="panel-body">
                          
@@ -75,18 +75,9 @@
                                         <td><?= $prj->date_debut; ?></td>
                                         <td><?= $prj->date_fin_reel; ?></td>
                                         <td class="text text-center">
-                                            <a href="update_projet.php?id=<?php echo $row[
-                                                    'id_prj'
-                                                ]; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
-                                                <a href="delete_projet.php?id=<?php echo $row[
-                                                    'id_prj'
-                                                ]; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
-
-                                               <!--  <button class='delete btn btn-danger btn-sm glyphicon glyphicon-trash' data-id='<?php echo $row[
-                                                   'id_prj'
-                                               ]; ?>' ></button> -->
-                       
-                                            </td>
+                                            <a href="Route.php?p=edit_projet&id=<?= $prj->id_prj; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                            <a href="Route.php?p=delete_projet&id=<?= $prj->id_prj; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
+                                        </td>
                                         </tr>
                                         <?php endforeach; ?>
                                         <?php endif; ?>
@@ -126,4 +117,5 @@
         </script>
         
     </body>
+    
 </html>
