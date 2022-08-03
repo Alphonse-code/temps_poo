@@ -2,12 +2,12 @@
 namespace App\Table;
 use App\App;
 
-class User extends Table
+class Users extends Table
 {
     private $id_user;
     private $nom;
     private $prenom;
-    private $email;
+    private $mail;
     private $level;
     private $tel;
     private $salaire;
@@ -37,14 +37,14 @@ class User extends Table
         $this->prenom = $prenom;
         return $this;
     }
-    public function getEmail(): ?string
+    public function getEmail()
     {
-        return $this->email;
+        return $this->mail;
     }
 
-    public function setEmail($email): self
+    public function setEmail($mail): self
     {
-        $this->email = $email;
+        $this->mail = $mail;
         return $this;
     }
 
@@ -117,7 +117,7 @@ class User extends Table
         return App::getDb()->query($sql);
 	}	
 
-    public static function updateUserInfo($id_user,$nom,$prenom,$mail,$level,$tel,$salaire) 
+    public static function updateUserInfo($id_user,$nom,$prenom,$mail,$level,$tel,$salaire,$psw) 
     {
         $user = Users::findByUserId($id_user);
         App::getDb()->query('UPDATE `tmp_users` 
@@ -127,8 +127,8 @@ class User extends Table
 
     public static function addUsers($nom,$prenom,$mail,$level,$tel,$salaire,$psw){
         
-         App::getDb()->query('INSERT INTO `tmp_users`(`id_user`, `nom`, `prenom`, `mail`, `level`, `tel`, `salaire`, `psw`) 
-        VALUES (null,"'.strtoupper($nom).'","'.$prenom.'","'.$level.'","'.$tel.'","'.$salaire.'","'.md5($psw).'")');
+         App::getDb()->query('INSERT INTO `tmp_users`(`nom`, `prenom`, `mail`, `level`, `tel`, `salaire`, `psw`) 
+        VALUES ("'.strtoupper($nom).'","'.$prenom.'","'.$mail.'","'.$level.'","'.$tel.'","'.$salaire.'","'.md5($psw).'")');
     }
 
     public static function deleteUsers($id_user) {

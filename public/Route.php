@@ -31,8 +31,7 @@ if ($p === 'home') {
     require ROOT . '/page/edit_projet.php';
 }elseif ($p === 'delete_projet') {
     require ROOT . '/page/delete_projet.php';
-}
-elseif ($p == 'logout') {
+}elseif ($p == 'logout') {
     require ROOT . '/page/logout.php';
 } elseif ($p == 'u_avantage') {
     require ROOT . '/page/avantage.php';
@@ -48,9 +47,14 @@ elseif ($p == 'logout') {
     require ROOT . '/page/reporting.php';
 } elseif ($p == 'timer') {
     require ROOT . '/page/timer.php';
-}
-elseif ($p == 'notif'){
+}elseif ($p == 'notif'){
     require ROOT . '/public/notification.php';
+}elseif ($p == 'edit_user') {
+    require ROOT . '/page/edit_user.php';
+}elseif ($p == 'delete_user'){
+    require ROOT . '/page/delete_user.php';
+}elseif ($p == 'new_user'){
+    require ROOT . '/page/new_users.php';
 }
 
 $content = ob_get_clean();

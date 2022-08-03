@@ -8,9 +8,9 @@
          <link rel="shortcut icon" href="./images/temps.png" type="image/x-icon">
     
 <!-- DataTables -->
-        <link rel="stylesheet" href="../public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="../public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-        <link rel="stylesheet" href="../public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- Theme style -->
         <!-- Theme style -->
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.css" integrity="sha512-y4S4cBeErz9ykN3iwUC4kmP/Ca+zd8n8FDzlVbq5Nr73gn1VBXZhpriQ7avR+8fQLpyq4izWm0b8s6q4Vedb9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,7 +47,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="./form_user.php">Ajouté</a>
+                            <a class="btn btn-primary" href="Route.php?p=new_user">Ajouté</a>
                         </div>
                         <div class="panel-body">
                            
@@ -65,7 +65,7 @@
                                 </thead>
                                 <tbody>  
                                      <?php
-                                     $list_users = App\Table\User::listUsers();
+                                     $list_users = App\Table\Users::listUsers();
 
                                      if (!empty($list_users)): ?>
                                         <?php foreach (
@@ -81,12 +81,8 @@
                                         <td><?= $user->level ?></td>
                                         <td><?= $user->tel ?></td>
                                         <td class="text text-center">
-                                                <a href="update_user.php?id=<?php echo $row[
-                                                    'id_user'
-                                                ]; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
-                                                <a href="delete_user.php?id=<?php echo $row[
-                                                    'id_user'
-                                                ]; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
+                                                <a href="Route.php?p=edit_user&id=<?= $user->id_user ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                                <a href="Route.php?p=delete_user&id=<?= $user->id_user ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
                                             </td>
                                         </tr>
                                          <?php endforeach; ?>
@@ -99,23 +95,23 @@
                 </div>
             </div><!--/.row-->	
         </div><!--/.main-->
-          <script src="../public/js/jquery-1.11.1.min.js"></script>
-        <script src="../public/js/bootstrap.min.js"></script>
-        <script src="../public/js/bootstrap-datepicker.js"></script>
-        <script src="../public/js/bootstrap-table.js"></script>
-        <script src="../public/plugins/jquery/jquery.min.js"></script>
-        <script src="../public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>    
-        <script src="../public/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="../public/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <script src="../public/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="../public/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-        <script src="../public/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="../public/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-        <script src="../public/plugins/jszip/jszip.min.js"></script>
-        <script src="../public/plugins/pdfmake/pdfmake.min.js"></script>
-        <script src="../public/plugins/pdfmake/vfs_fonts.js"></script>
-        <script src="../public/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-        <script src="../public/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+          <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/bootstrap-table.js"></script>
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>    
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="plugins/jszip/jszip.min.js"></script>
+        <script src="plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
         
  <script>
      $(function () {
