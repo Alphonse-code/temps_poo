@@ -108,8 +108,7 @@ class Users extends Table
 
     public static function listUsers(): ?array
     {
-        $sql =
-            'SELECT `id_user`, `nom`, `prenom`, `mail`, `level`, `tel`, `salaire`, `psw` FROM `tmp_users`';
+        $sql ='SELECT `id_user`, `nom`, `prenom`, `mail`, `level`, `tel`, `salaire`, `psw` FROM `tmp_users`';
         return App::getDb()->query($sql);
     }
     public static function list_utilisateur(){		

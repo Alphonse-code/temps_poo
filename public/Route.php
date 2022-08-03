@@ -55,6 +55,8 @@ if ($p === 'home') {
     require ROOT . '/page/delete_user.php';
 }elseif ($p == 'new_user'){
     require ROOT . '/page/new_users.php';
+}elseif ($p == 'new_temps_rappel'){
+    require ROOT . '/page/new_temps_rappel.php';
 }
 
 $content = ob_get_clean();

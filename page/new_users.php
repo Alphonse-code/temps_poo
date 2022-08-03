@@ -1,8 +1,6 @@
 
 <?php
-
 if (isset($_POST['save'])) {
-
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $mail = $_POST['mail'];
@@ -11,11 +9,9 @@ if (isset($_POST['save'])) {
     $salaire = $_POST['salaire'];
     $psw = MD5($_POST['psw']);
     App\Table\Users::addUsers($nom,$prenom, $mail, $level, $tel, $salaire, $psw);
-
     header('location: Route.php?p=list_users');
 }
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,11 +29,8 @@ if (isset($_POST['save'])) {
                     <li class="active">Users</li>
                 </ol>
             </div><!--/.row-->
-
             <div class="row">
-
             </div><!--/.row-->
-
             <div class="row">
                 <div class="col-lg-12">
                     <h3 class="text text-center"></h3>
@@ -64,8 +57,7 @@ if (isset($_POST['save'])) {
                             <select class="form-control" name="level" value="" >
                             <option value="2">Utilisateur</option>
                             <option value="8">Admin</option>
-                            <option value="9">Super Admin</option>
-                           
+                            <option value="9">Super Admin</option>    
                         </select>
                         </div>
                         <div class="form-group">
@@ -79,10 +71,8 @@ if (isset($_POST['save'])) {
                         <div class="form-group">
                             <label>Mot de passe</label>
                             <input type="password" value="" class="form-control" name="psw">
-                        </div>
-                        
-                         	<input type="submit" class="btn btn-primary" name="save" value="submit">
-                        
+                        </div>    
+                         	<input type="submit" class="btn btn-primary" name="save" value="submit"> 
                     </form>
                 </div>
             </div>

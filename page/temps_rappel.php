@@ -22,31 +22,27 @@
         <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li><a href="Route.php?p=home"><span class="glyphicon glyphicon-home"></span></a></li>
                     <li class="active">Rappel</li>
                 </ol>
             </div><!--/.row-->
             <div class="row">
 
             </div><!--/.row-->
-
             <div class="row">
                 <div class="col-lg-12">
-
                 </div>
             </div><!--/.row-->
-
             <div class="row">
                 <div class="col-lg-12">
                     <h3 class="page-header text text-center">Parametrage du temp de rappel </h3>
                 </div>
             </div><!--/.row-->
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                           <a class="btn btn-primary" href="#">Créer</a>
+                           <a class="btn btn-primary" href="Route.php?p=new_temps_rappel">Créer</a>
                         </div>
                         <div class="panel-body">
 
