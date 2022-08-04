@@ -1,3 +1,10 @@
+<?php 
+
+if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login');
+} elseif ($_SESSION['user']['level'] == 2) {
+    header('location:Route.php?p=home');
+}
 ?>
 <!DOCTYPE html>
 <html>

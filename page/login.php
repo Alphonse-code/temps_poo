@@ -3,9 +3,9 @@ ini_set('display_errors', '1');
 error_reporting(E_ALL);
 
 if (isset($_POST['mail']) && isset($_POST['psw'])) {
-    $user = new App\Table\User();
+    $user = new App\Table\Users();
     try {
-        $result = App\Table\User::findByEmail($_POST['mail']);
+        $result = App\Table\Users::findByEmail($_POST['mail']);
     } catch (Exception $e) {
         echo $e->getMessage();
     }

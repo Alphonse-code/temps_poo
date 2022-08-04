@@ -38,7 +38,7 @@
     $id_prj = $_GET['id_prj'];
     // maitre à jour prestaion 
     App\Table\Prestation::update_prestation($date, $heure_debut, $heure_fin,$id_user);
-   $salair_user = App\Table\User::getSalaireById($id_user); 
+   $salair_user = App\Table\Users::getSalaireById($id_user); 
    $karama = null;
    $cout = null;
    foreach($salair_user as $sl){

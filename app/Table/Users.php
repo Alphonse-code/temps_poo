@@ -139,4 +139,8 @@ class Users extends Table
        return App::getDb()->query("SELECT salaire FROM tmp_users WHERE id_user = '$id_user'");
     }
 
+    public static function getUsername(){
+        return App::getDb()->query("SELECT id_user, nom, prenom FROM tmp_users");
+    }
+
 }

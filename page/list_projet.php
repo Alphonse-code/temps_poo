@@ -1,4 +1,9 @@
+<?php 
 
+if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login');
+} 
+?>
 <!DOCTYPE html>
 <html>
     <head>

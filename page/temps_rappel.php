@@ -51,6 +51,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nomp projet</th>
+                                        <th>Titre message</th>
+                                        <th>Message</th>
                                         <th>Utilisateur</th>
                                         <th>Rappel <sub>(Heure)</sub></th>
                                         <th class="text text-center"> Action</th>
@@ -63,20 +65,20 @@
                                         <?php foreach($list_notif as $notif): ?>  
                                     <tr>
                                         <td><?= $notif->id_notif; ?></td>
-                                        <td><?= $notif->nom; ?></td>
+                                        <td><?= $notif->title; ?></td>
+                                        <td><?= $notif->message; ?></td>
                                         <td><?= $notif->nomP; ?></td>
+                                        <td><?= $notif->nom; ?></td>
                                         <td><?= $notif->repeat; ?></td>
                                         <td class="text text-center">
-                                            <a href="update_rappel.php?id=<?= $notif->id_notif; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
-                                            <a href="delete_rappel.php?id=<?= $notif->id_notif; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>                 
+                                            <a href="Route.php?p=edit_temps_rappel&id=<?= $notif->id_notif; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                            <a href="Route.php?p=delete_rappel&id=<?= $notif->id_notif; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>                 
                                         </td>
                                     </tr>
                                    <?php endforeach; ?>
                                   <?php endif; ?>
                                 </tbody>
                             </table>
-                          
-
                         </div>
                     </div>
                 </div>

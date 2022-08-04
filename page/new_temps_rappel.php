@@ -1,6 +1,5 @@
 
 <?php
-$users = App\Table\Users::list_utilisateur();
 
 date_default_timezone_set('Europe/Paris');
 if (isset($_POST['save'])) {
@@ -9,7 +8,7 @@ if (isset($_POST['save'])) {
     $message = $_POST['message'];
     $repetition = $_POST['repetition'];
     $next_time = date('Y-m-d H:i:s');
-    App\Table\Notification::saveNotification($title, $message, $next_time, $repetition, $id_user);
+    App\Table\Notification::saveNotification("$title", "$message", "$next_time.", "$repetition", "$id_user");
     header('location: Route.php?p=temps_rappel');   
 }
 ?>
@@ -57,9 +56,14 @@ if (isset($_POST['save'])) {
                             <input type="number" class="form-control" name="repetition">
                         </div>
                         <div class="form-group">
-                            <label>Utilisateur</label>    
-                            <select class="form-control" name="id_user" >
-                                <option value=""></option>
+                            <label>Utilisateur</label>  
+                               <select class="form-control" name="id_user" value="" >
+                              <?php  $users = App\Table\Users::list_utilisateur();
+                               if (!empty($users)): ?>
+                                <?php foreach($users as $usr): ?>
+                                <option value="<?= $usr->id_user; ?>"><?= $usr->nom .' '. $usr->prenom; ?></option>
+                               <?php endforeach; ?>
+                               <?php endif; ?>
                             </select>
                         </div>
                         <input type="submit" class="btn btn-primary" name="save" value="submit">
@@ -67,9 +71,9 @@ if (isset($_POST['save'])) {
                 </div>
             </div>
         </div>
-         <script src="../public/js/jquery-1.11.1.min.js"></script>
-        <script src="../public/js/bootstrap.min.js"></script>
-        <script src="../public/js/bootstrap-datepicker.js"></script>
-        <script src="../public/js/bootstrap-table.js"></script>
+         <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/bootstrap-table.js"></script>
     </body>
 </html>
