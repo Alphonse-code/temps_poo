@@ -1,58 +1,70 @@
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>TEMPS | Avantage</title>
+         <link rel="shortcut icon" href="./images/temps.png" type="image/x-icon">
 <!-- DataTables -->
         <link rel="stylesheet" href="../public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="../public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
         <link rel="stylesheet" href="../public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-        <!-- Theme style -->
-
+        <!-- Theme style -->        
 <body>
-       <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
-                    <li class="active">Utilisateur</li>
+                    <li><a href="Route.php?p=home"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="active">U-avantage</li>
                 </ol>
             </div><!--/.row-->
             <div class="row">
 
             </div><!--/.row-->
-
             <div class="row">
                 <div class="col-lg-12">
-
                 </div>
             </div><!--/.row-->
-
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header text text-center">Liste des projet et des personne assigner</h3>
+                    <h3 class="page-header text text-center">Avantage de l'utilisateur </h3>
                 </div>
             </div><!--/.row-->
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="Route.php?p=new_task">Ajouté</a>
+                           <a class="btn btn-primary" href="Route.php?p=new_user_avtg">Créer</a>
                         </div>
                         <div class="panel-body">
+
                             <table id="tbticket" class="table table-responsive">
                                 <thead>  
-                                    <tr>   
-                                        <th>Utilisateur</th>
-                                        <th>Projet</th>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Nom avantage</th>
+                                        <th>Montant avantage</th>
+                                        <th class="text text-center"> Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>  
-                                <?php $list_uprj = App\Table\Tache::listUsersProject(); 
+                                   <?php $list = App\Table\Avantage::ListAvantageUsers(); 
                                     
-                                    if (!empty($list_uprj)): ?>
-                                        <?php foreach($list_uprj as $u_prj): ?> 
+                                    if (!empty($list)): ?>
+                                        <?php foreach($list as $lst): ?>  
                                     <tr>
-                                        <td><?= $u_prj->users; ?></td>
-                                        <td><?= $u_prj->nP; ?></td>
+                                        <td><?= $lst->id_avg_user?></td>
+                                        <td><?= $lst->nom; ?></td>
+                                        <td><?= $lst->prenom; ?></td>
+                                        <td><?= $lst->nom_avantage; ?></td>
+                                        <td><?= $lst->montant_avantage; ?></td>
+                                        <td class="text text-center">
+                                            <a href="Route.php?p=delete_user_avtg&id=<?= $lst->id_avg_user; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>                 
+                                        </td>
                                     </tr>
-                                     <?php endforeach; ?>
+                                   <?php endforeach; ?>
                                   <?php endif; ?>
                                 </tbody>
                             </table>

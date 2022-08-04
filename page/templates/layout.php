@@ -50,8 +50,8 @@ setlocale(LC_ALL, 'fr_FR');
                     $_SESSION['user']['level'] == 9 ||
                     $_SESSION['user']['level'] == 8
                 ) { ?>
-
                     <li><a href="Route.php?p=u_avantage"><span class="glyphicon glyphicon-pencil"></span>AVANTAGE</a></li>
+                    <li><a href="Route.php?p=user_avtg"><span class="glyphicon glyphicon-check"></span>AVANTAGE UTILISATEUR</a></li>
                     <li><a href="Route.php?p=temps_rappel"><span class="glyphicon glyphicon-dashboard"></span>TEMP RAPPEL</a></li>
                     <li><a href="Route.php?p=cout_min"><span class="glyphicon glyphicon-bookmark"></span>COUT</a></li>
                     <li><a href="Route.php?p=list_projet"><span class="glyphicon glyphicon-check"></span>PROJET</a></li>

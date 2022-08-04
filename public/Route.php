@@ -63,6 +63,18 @@ if ($p === 'home') {
     require ROOT . '/page/edit_temps_rappel.php';
 } elseif ($p == 'delete_rappel') {
     require ROOT . '/page/delete_rappel.php';
+} elseif ($p == 'user_avtg') {
+    require ROOT . '/page/user_avantage.php';
+}elseif ($p == 'new_user_avtg') {
+    require ROOT . '/page/new_user_avtg.php';
+}elseif ($p == 'delete_user_avtg') {
+    require ROOT . '/page/delete_user_avtg.php';
+}elseif ($p == 'delete_avtg') {
+    require ROOT . '/page/delete_avtg.php';
+}elseif ($p == 'update_avantage') {
+    require ROOT . '/page/update_avantage.php';
+}elseif ($p == 'new_avantage') {
+    require ROOT . '/page/new_avantage.php';
 }
 
 $content = ob_get_clean();
