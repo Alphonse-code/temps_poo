@@ -10,7 +10,22 @@ if (!isset($_SESSION['user'])) {
 }
 
 require '../app/Autoloader.php';
+
 App\Autoloader::register();
+
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = 'es';
+}
+elseif(!isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
+if ($_GET['lang'] == 'fr') {
+    $_SESSION['lang'] = 'fr';
+} elseif ($_GET['lang'] == 'en') {
+    $_SESSION['lang'] = 'en';
+} elseif ($_GET['lang'] == 'es') {
+    $_SESSION['lang'] = 'es';
+}
+}
+require_once '../app/Langue/' . $_SESSION['lang'] . '.php';
 
 if (isset($_GET['p'])) {
     $p = $_GET['p'];
@@ -65,15 +80,15 @@ if ($p === 'home') {
     require ROOT . '/page/delete_rappel.php';
 } elseif ($p == 'user_avtg') {
     require ROOT . '/page/user_avantage.php';
-}elseif ($p == 'new_user_avtg') {
+} elseif ($p == 'new_user_avtg') {
     require ROOT . '/page/new_user_avtg.php';
-}elseif ($p == 'delete_user_avtg') {
+} elseif ($p == 'delete_user_avtg') {
     require ROOT . '/page/delete_user_avtg.php';
-}elseif ($p == 'delete_avtg') {
+} elseif ($p == 'delete_avtg') {
     require ROOT . '/page/delete_avtg.php';
-}elseif ($p == 'update_avantage') {
+} elseif ($p == 'update_avantage') {
     require ROOT . '/page/update_avantage.php';
-}elseif ($p == 'new_avantage') {
+} elseif ($p == 'new_avantage') {
     require ROOT . '/page/new_avantage.php';
 }
 

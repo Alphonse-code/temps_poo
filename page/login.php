@@ -4,13 +4,9 @@ error_reporting(E_ALL);
 
 if (isset($_POST['mail']) && isset($_POST['psw'])) {
     $user = new App\Table\Users();
-    try {
-        $result = App\Table\Users::findByEmail($_POST['mail']);
-    } catch (Exception $e) {
-        echo $e->getMessage();
-    }
-    
-    if (isset($result)) {
+    $result = App\Table\Users::findByEmail($_POST['mail']);
+
+    if (isset($result) && !empty($result)) {
         $user->setEmail($result->getEmail());
         $user->setPsw($result->getPsw());
         if (MD5($_POST['psw']) == $user->getPsw()) {
@@ -20,10 +16,12 @@ if (isset($_POST['mail']) && isset($_POST['psw'])) {
                 'prenom' => $result->getPrenom(),
                 'level' => $result->getLevel(),
             ];
-            header('location:Route.php?p=home');
+            header('location:Route.php?p=home&lang=fr');
         } else {
-            $errors = "Nom d'utilisateur ou mot de passe incorrect.";
+            $errors = 'Le Mot de passe saisie est incorrect.';
         }
+    } else {
+        $errors = "L'adresse email saisie n'existe pas.";
     }
 }
 ?>
@@ -62,6 +60,9 @@ if (isset($_POST['mail']) && isset($_POST['psw'])) {
                                  </div>
                             <?php endif; ?>
                             <button type="submit" name="login" class="btn mt-2 w-100 btn-connexion " id="log">Se connecter </button>  
+                               <!-- <button type="submit" name="login"><?= $lang[
+                                   'btn-annul'
+                               ] ?></button> -->
                         </form>
                     </div>
                 </div>
