@@ -1,4 +1,5 @@
 <?php
+$lg = $_SESSION['lang'];
 if (empty($_SESSION['user'])) {
     header('location:Route.php?p=login&lang=fr');
 }
@@ -18,7 +19,7 @@ if (isset($_POST['save'])) {
     );
 
     header(
-        'location:Route.php?p=timer&hd=' . $heure_debut . '&id_prj=' . $id_prj
+        'location:Route.php?p=timer&lang='.$lg.'&hd=' . $heure_debut . '&id_prj=' . $id_prj
     );
 }
 ?>

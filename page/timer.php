@@ -26,7 +26,7 @@
     font-weight: bold;
 }</style>
 </head>
-<body onload="timer();">
+<body onload="to_start();">
 
 <?php if(isset($_POST['stop']))
 {
@@ -66,7 +66,7 @@
     }
     $coutmin = $co_par_min * $total_min;
     App\Table\Cout::insert_cout($id_user, $date, $coutmin);
-    header('Location:Route.php?p=home');
+    header('Location:Route.php?p=home&lang='.$_SESSION['lang']);
 }
     ?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -81,8 +81,9 @@
                 <div class="panel-body">
 <input type="hidden" id="time" data-heure="<?= $_GET['hd'] ?>" data-id="<?= $_GET['id_prj'] ?>">
      <div class="container">
+   
         <div class="timerDisplay" id="last_time">
-                00 : 00 : 00 
+                
             </div>
                 <div class="buttons">   
                     <form action="" method="post">
@@ -97,22 +98,22 @@
   <script>
     $(document).ready(function () {
         $("#pauseTimer").click(function () {
-            localStorage.removeItem('last_time');
-            $.ajax({
+         localStorage.removeItem('last_time');
+            //alert('Chronomètre stop');
+           /* $.ajax({
                 url: 'timer_action.php',
                 type: 'POST',
                 data: { heure:$('#time').data('heure'),id:$('#time').data('id')  },
                 success: function (result) {
-                    console.log("Sending...");
-                   // alert('Chronomètre stop');
-                    document.location.href="Route.php?p=home";
+                    console.log("Sending..."); 
+                    document.location.href="Route.php?p=home&lang=fr";
                     localStorage.removeItem('last_time');
                 }  
-            });
+            });*/
         });
     });
 </script>
-<script src="../public/js/timer.js"></script>
+<script src="../public/js/chrono.js"></script>
 <script>
 window.onunload = () => {
    var timer = document.getElementById("last_time");    
