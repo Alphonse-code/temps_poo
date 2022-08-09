@@ -7,8 +7,8 @@
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
-                    <li class="active">Avantage</li>
+                    <li><a href="Route.php?p=home&lang=fr"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="active"><?= $lang['s_avtg_pg'] ?></li>
                 </ol>
             </div><!--/.row-->
             <div class="row">
@@ -19,23 +19,23 @@
             </div><!--/.row-->
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header text text-center">Avantage de l'utilisateur</h3>
+                    <h3 class="page-header text text-center"><?= $lang['list_avtg'] ?></h3>
                 </div>
             </div><!--/.row-->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="Route.php?p=new_avantage">Nouvelle avantage</a>                    
+                            <a class="btn btn-primary" href="Route.php?p=new_avantage"><?= $lang['btn_new_avtg'] ?></a>                    
                         </div>
                         <div class="panel-body">                  
                             <table id="tbticket" class="table table-responsive">
                                 <thead>  
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nom de l'avantage</th>
-                                        <th>Montant de l'avantage</th>
-                                        <th class="text text-center"> Action</th>
+                                        <th><?= $lang['id'] ?></th>
+                                        <th><?= $lang['name_avtg'] ?></th>
+                                        <th><?= $lang['montant_avtg'] ?></th>
+                                        <th class="text text-center"> <?= $lang['tabl_action'] ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>  

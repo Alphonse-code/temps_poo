@@ -34,7 +34,7 @@ if (isset($_POST['save'])) {
                 <div class="panel-body">
                     <form  method="POST" id="form"  style="width: 90vh;margin-left: 20%;">
 					<div class="form-group">
-                            <label>Projet</label>    
+                            <label><?= $lang['select_prj'] ?></label>    
                             <select class="form-control" name="id_prj" value="" >
                               <?php
                               $list_prj = App\Table\Projet::listProjects();
@@ -46,7 +46,7 @@ if (isset($_POST['save'])) {
                               ?>
                             </select>
                         </div>
-                        <input type="submit" class="btn btn-primary" name="save" id="save" value="submit">
+                        <input type="submit" class="btn btn-primary" name="save" id="save" value="<?= $lang['btn_submit'] ?>" />
                     </form>
                 </div>
             </div>

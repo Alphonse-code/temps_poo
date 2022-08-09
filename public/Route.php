@@ -1,22 +1,17 @@
 <?php
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
-
 define('ROOT', dirname(__DIR__));
-
 session_start();
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = [];
 }
-
 require '../app/Autoloader.php';
-
 App\Autoloader::register();
-
 if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'es';
+    $_SESSION['lang'] = 'fr';
 }
-elseif(!isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
+//elseif(!isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
 if ($_GET['lang'] == 'fr') {
     $_SESSION['lang'] = 'fr';
 } elseif ($_GET['lang'] == 'en') {
@@ -24,7 +19,7 @@ if ($_GET['lang'] == 'fr') {
 } elseif ($_GET['lang'] == 'es') {
     $_SESSION['lang'] = 'es';
 }
-}
+//}
 require_once '../app/Langue/' . $_SESSION['lang'] . '.php';
 
 if (isset($_GET['p'])) {
