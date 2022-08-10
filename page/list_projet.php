@@ -48,7 +48,7 @@ if (empty($_SESSION['user'])) {
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="Route.php?p=new_projet">Créer projet</a>
+                            <a class="btn btn-primary" href="Route.php?p=new_projet&lang=<?=$_SESSION['lang']?>">Créer projet</a>
                         </div>
                         <div class="panel-body">
                          
@@ -75,7 +75,7 @@ if (empty($_SESSION['user'])) {
                                         <td><?= $prj->date_debut; ?></td>
                                         <td><?= $prj->date_fin_reel; ?></td>
                                         <td class="text text-center">
-                                            <a href="Route.php?p=edit_projet&id=<?= $prj->id_prj; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                            <a href="Route.php?p=edit_projet&lang=<?=$_SESSION['lang']?>&id=<?= $prj->id_prj; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
                                             <a href="Route.php?p=delete_projet&id=<?= $prj->id_prj; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
                                         </td>
                                         </tr>

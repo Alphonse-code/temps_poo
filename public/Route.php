@@ -11,7 +11,7 @@ App\Autoloader::register();
 if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = 'fr';
 }
-//elseif(!isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
+elseif(!isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
 if ($_GET['lang'] == 'fr') {
     $_SESSION['lang'] = 'fr';
 } elseif ($_GET['lang'] == 'en') {
@@ -19,7 +19,7 @@ if ($_GET['lang'] == 'fr') {
 } elseif ($_GET['lang'] == 'es') {
     $_SESSION['lang'] = 'es';
 }
-//}
+}
 require_once '../app/Langue/' . $_SESSION['lang'] . '.php';
 
 if (isset($_GET['p'])) {

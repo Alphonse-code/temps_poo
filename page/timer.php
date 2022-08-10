@@ -66,7 +66,7 @@
                 data: { heure:$('#time').data('heure'),id:$('#time').data('id')  },
                 success: function (result) {
                     console.log("Sending..."); 
-                     alert('Chronomètre stop');
+                    // alert('Chronomètre stop');
                     document.location.href="Route.php?p=home&lang=fr";
                     localStorage.removeItem('last_time');
                 }  

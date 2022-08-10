@@ -37,7 +37,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                           <a class="btn btn-primary" href="Route.php?p=new_temps_rappel">Créer</a>
+                           <a class="btn btn-primary" href="Route.php?p=new_temps_rappel&lang=<?=$_SESSION['lang']?>">Créer</a>
                         </div>
                         <div class="panel-body">
 
@@ -66,7 +66,7 @@
                                         <td><?= $notif->nom; ?></td>
                                         <td><?= $notif->repeat; ?></td>
                                         <td class="text text-center">
-                                            <a href="Route.php?p=edit_temps_rappel&id=<?= $notif->id_notif; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                            <a href="Route.php?p=edit_temps_rappel&lang=<?=$_SESSION['lang']?>&id=<?= $notif->id_notif; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
                                             <a href="Route.php?p=delete_rappel&id=<?= $notif->id_notif; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>                 
                                         </td>
                                     </tr>

@@ -42,7 +42,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="Route.php?p=new_user">Ajouté</a>
+                            <a class="btn btn-primary" href="Route.php?p=new_user&lang=<?=$_SESSION['lang']?>">Ajouté</a>
                         </div>
                         <div class="panel-body">
                            
@@ -76,7 +76,7 @@
                                         <td><?= $user->level ?></td>
                                         <td><?= $user->tel ?></td>
                                         <td class="text text-center">
-                                                <a href="Route.php?p=edit_user&id=<?= $user->id_user ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                                <a href="Route.php?p=edit_user&lang=<?=$_SESSION['lang']?>&id=<?= $user->id_user ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
                                                 <a href="Route.php?p=delete_user&id=<?= $user->id_user ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
                                             </td>
                                         </tr>

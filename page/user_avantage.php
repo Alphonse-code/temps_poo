@@ -34,7 +34,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                           <a class="btn btn-primary" href="Route.php?p=new_user_avtg">Créer</a>
+                           <a class="btn btn-primary" href="Route.php?p=new_user_avtg&lang=<?=$_SESSION['lang']?>">Créer</a>
                         </div>
                         <div class="panel-body">
 

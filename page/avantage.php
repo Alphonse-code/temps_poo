@@ -26,7 +26,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel panel-heading">
-                            <a class="btn btn-primary" href="Route.php?p=new_avantage"><?= $lang['btn_new_avtg'] ?></a>                    
+                            <a class="btn btn-primary" href="Route.php?p=new_avantage&lang=<?=$_SESSION['lang']?>"><?= $lang['btn_new_avtg'] ?></a>                    
                         </div>
                         <div class="panel-body">                  
                             <table id="tbticket" class="table table-responsive">
@@ -47,7 +47,7 @@
                                     <td><?= $avt->nom_avantage; ?></td>
                                     <td><?= $avt->montant_avantage; ?></td>
                                     <td class="text text-center">
-                                        <a href="Route.php?p=update_avantage&id=<?=$avt->id_avantage; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+                                        <a href="Route.php?p=update_avantage&lang=<?=$_SESSION['lang']?>&id=<?=$avt->id_avantage; ?>" class='btn btn-success btn-sm glyphicon glyphicon-edit' title='Modifier'></a> &nbsp;&nbsp;&nbsp;&nbsp; 
                                         <a href="Route.php?p=delete_avtg&id=<?=$avt->id_avantage; ?>" class='btn btn-danger btn-sm glyphicon glyphicon-trash' title='Supprimer'></a>
                                     </td>
                                     </tr>

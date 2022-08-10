@@ -1,5 +1,6 @@
 
 <?php
+$lg = $_SESSION['lang'];
 if (isset($_POST['save'])) {
     $nom = $_POST['nom'];
     $montant = $_POST['montant'];
