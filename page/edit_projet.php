@@ -1,5 +1,7 @@
 <?php
-
+ if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login&lang=fr');
+}
 $projet = App\Table\Projet::findByProjectId($_GET['id']);
 
 if (isset($_POST['save'])) {

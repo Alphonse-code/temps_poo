@@ -1,4 +1,8 @@
- 
+ <?php 
+ if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login&lang=fr');
+}
+ ?>
 <!DOCTYPE html>
 <html>
     <head>

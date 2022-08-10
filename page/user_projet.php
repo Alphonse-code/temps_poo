@@ -1,4 +1,6 @@
-
+<?php  if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login&lang=fr');
+} ?>
 <!-- DataTables -->
         <link rel="stylesheet" href="../public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="../public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">

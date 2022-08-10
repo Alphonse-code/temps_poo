@@ -1,5 +1,9 @@
 
 <?php
+ if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login&lang=fr');
+}
+ 
 if (isset($_POST['save'])) {
 
     $id_user = $_POST['id_user'];

@@ -1,4 +1,6 @@
- 
+ <?php  if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login&lang=fr');
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,8 +60,7 @@
   <script>
     $(document).ready(function () {
         $("#pauseTimer").click(function () {
-         localStorage.removeItem('last_time');
-           
+         localStorage.removeItem('last_time');  
             $.ajax({
                 url: 'url.php?p=timer_action',
                 type: 'POST',

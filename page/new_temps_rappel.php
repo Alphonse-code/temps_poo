@@ -1,6 +1,9 @@
 
 <?php
-
+ if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login&lang=fr');
+}
+ 
 date_default_timezone_set('Europe/Paris');
 if (isset($_POST['save'])) {
     $title = $_POST['title'];

@@ -1,4 +1,7 @@
 <?php
+ if (empty($_SESSION['user'])) {
+    header('location:Route.php?p=login&lang=fr');
+}
 $users = App\Table\Users::findByUserId($_GET['id']);
 
 if (isset($_POST['save'])) {
