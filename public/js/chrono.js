@@ -1,13 +1,21 @@
 var h = 0, m = 0, s = 0;
+let timerRef = document.querySelector('.timerDisplay'); 
 function to_start() {
  //window.clearInterval(tm); // stop the timer 
     tm = window.setInterval('disp()', 1000); 
-    
 }
-           
+ document.getElementById('pauseTimer').addEventListener('click', ()=>{  
+   console.log('pauseTimer clicked');
+   localStorage.removeItem('last_time');
+   window.clearInterval(tm); 
+   str = '00:00:00';
+  document.getElementById('last_time').innerHTML = str;
+  localStorage.removeItem('last_time');
+ }); 
+  
 function disp() {
     let last = localStorage.getItem('last_time');
-    console.log('last time from localstorage : ' + last);
+    
   if (typeof last !== 'undefined' && last !== null){
       var [he,min,sec] = last.split(':');
       s=parseInt(sec);
@@ -34,3 +42,5 @@ function disp() {
     }// end if else s < 59
     // end of calculation for next display     
 }
+
+ 

@@ -26,7 +26,9 @@ if ($p == 'notif') {
 } elseif ($p == 'data2') {
     require ROOT . '/public/data2.php';
 } elseif ($p == 'data3') {
-     require ROOT . '/public/data3.php';
+    require ROOT . '/public/data3.php';
+} elseif ($p == 'timer_action') {
+    require ROOT . '/public/timer_action.php';
 }
 
 $content = ob_get_clean();

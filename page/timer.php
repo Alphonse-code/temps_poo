@@ -28,47 +28,7 @@
 </head>
 <body onload="to_start();">
 
-<?php if(isset($_POST['stop']))
-{
-    date_default_timezone_set('Europe/Paris');
-    $heure_fin = date('H:i:s');
-    $date = date('Y-m-d');
-    $id_user = $_SESSION['user']['id'];
-    $heure_debut = $_GET['hd'];
-    $id_prj = $_GET['id_prj'];
-    // maitre à jour prestaion 
-    App\Table\Prestation::update_prestation($date, $heure_debut, $heure_fin,$id_user);
-   $salair_user = App\Table\Users::getSalaireById($id_user); 
-   $karama = null;
-   $cout = null;
-   foreach($salair_user as $sl){
-    $karama =iconv('UTF-8', 'ISO-8859-1//IGNORE', $sl->salaire);
-   }
-  
-   $cout_min = App\Table\Prestation::calcule_cout_minute($date, $heure_debut, $heure_fin);
-  foreach($cout_min as $cm){
-    $cout = $cm->cout_minute;
-   }
-   // somme avantage par user 
-   $somme_avt = App\Table\Avantage::somme_avantage($id_user);
-   $total = null;
-   foreach($somme_avt as $cm){
-    $total = $cm->total;
-   }
-   
-    $co_par_min = ($karama * 12 + $total) / 80640;
 
-    // total nombre de minute par user dans une date donné
-    $total_minute = App\Table\Prestation::total_minute($id_user, $date);
-    $total_min = null;
-    foreach($total_minute as $tm){
-        $total_min = $tm->tot_min;
-    }
-    $coutmin = $co_par_min * $total_min;
-    App\Table\Cout::insert_cout($id_user, $date, $coutmin);
-    header('Location:Route.php?p=home&lang='.$_SESSION['lang']);
-}
-    ?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <div class="row">
                 <ol class="breadcrumb">
@@ -86,9 +46,9 @@
                 
             </div>
                 <div class="buttons">   
-                    <form action="" method="post">
+                    <!--<form action="" method="post"> -->
                     <button id="pauseTimer" name="stop" class="btn btn-warning btn-lg">Stop</button>
-                   </form>
+                  <!-- </form> -->
                 </div>
             </div>  
             <h1 id="time"></h1>
@@ -99,17 +59,18 @@
     $(document).ready(function () {
         $("#pauseTimer").click(function () {
          localStorage.removeItem('last_time');
-            //alert('Chronomètre stop');
-           /* $.ajax({
-                url: 'timer_action.php',
+           
+            $.ajax({
+                url: 'url.php?p=timer_action',
                 type: 'POST',
                 data: { heure:$('#time').data('heure'),id:$('#time').data('id')  },
                 success: function (result) {
                     console.log("Sending..."); 
+                     alert('Chronomètre stop');
                     document.location.href="Route.php?p=home&lang=fr";
                     localStorage.removeItem('last_time');
                 }  
-            });*/
+            });
         });
     });
 </script>
