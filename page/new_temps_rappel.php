@@ -11,7 +11,7 @@ if (isset($_POST['save'])) {
     $message = $_POST['message'];
     $repetition = $_POST['repetition'];
     $next_time = date('Y-m-d H:i:s');
-    App\Table\Notification::saveNotification("$title", "$message", "$next_time.", "$repetition", "$id_user");
+    App\Table\Notification::saveNotification("$title", "$message", "$next_time", "$repetition", "$id_user");
     header('location: Route.php?p=temps_rappel');   
 }
 ?>

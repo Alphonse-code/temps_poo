@@ -34,7 +34,7 @@ setlocale(LC_ALL, 'fr_FR');
                     <div class="user-menu">
                         <div class="pull-right"> 
                             <select class="fondo-color" name="lang" id="lang" style="border: 0px solid #ccc;">
-                                <option value="fr">🇫🇷&emsp;fr</option>
+                                <option value="fr">FR&emsp;fr</option>
                                 <option value="en">🇺🇸&emsp;en</option>
                                 <option value="es">🇪🇸&emsp;es</option>
                             </select>

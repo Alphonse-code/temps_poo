@@ -58,20 +58,17 @@
                                         <th>Utilisateur</th>
                                         <th>Date</th>
                                         <th>Cout minute</th>
-                                 
                                     </tr>
                                 </thead>
                                 <tbody>  
                                      <?php $list_cout = App\Table\Coutminute::list_cou(); 
-                                    
                                     if (!empty($list_cout)): ?>
                                         <?php foreach($list_cout as $cout): ?>  
                                     <tr>
                                         <td><?= $cout->id_user; ?></td>
                                         <td><?= $cout->users ?></td>
                                         <td><?= $cout->date; ?></td>  
-                                        <td><?= $cout->montant; ?></td>
-                                        
+                                        <td><?= number_format((float)$cout->montant,2,'.',''); ?></td>
                                         </tr>
                                         <?php endforeach; ?>
                                   <?php endif; ?>

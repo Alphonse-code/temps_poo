@@ -11,10 +11,11 @@ if (isset($_POST['save'])) {
     $level = $_POST['level'];
     $tel = $_POST['tel'];
     $salaire = $_POST['salaire'];
-    $psw = MD5($_POST['psw']);
+    $psw = password_hash($_POST['psw'], PASSWORD_BCRYPT);
     App\Table\Users::addUsers($nom,$prenom, $mail, $level, $tel, $salaire, $psw);
     header('location: Route.php?p=list_users');
 }
+
 ?>
 <!DOCTYPE html>
 <html>

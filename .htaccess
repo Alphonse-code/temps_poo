@@ -1,6 +1,0 @@
-Options +MultiViews
-
-RewriteEngine On
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ public/Index.php?p=$1 [QSA,NC,L]

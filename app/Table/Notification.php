@@ -52,9 +52,8 @@ class Notification extends Table
 
         return App::getDb()->query($sql);
     }
-    public static function saveNotification($title, $message, $ntime, $repeat,$id_user ){	
+    public static function saveNotification($title, $message, $ntime, $repeat,$id_user){	
 		$insertQuery = "INSERT INTO tmp_notifications ( `title`, `message`, `ntime`, `repeat`, `id_user`) VALUES ('".$title."', '".$message."', '".$ntime."', $repeat, $id_user)";
-		
         App::getDb()->query($insertQuery);		
 	}		
 	

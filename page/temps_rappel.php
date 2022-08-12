@@ -63,9 +63,9 @@
                                         <?php foreach($list_notif as $notif): ?>  
                                     <tr>
                                         <td><?= $notif->id_notif; ?></td>
-                                        <td><?= $notif->title; ?></td>
-                                        <td><?= $notif->message; ?></td>
                                         <td><?= $notif->nomP; ?></td>
+                                        <td><?= $notif->message; ?></td>
+                                        <td><?= $notif->title; ?></td>
                                         <td><?= $notif->nom; ?></td>
                                         <td><?= $notif->repeat; ?></td>
                                         <td class="text text-center">

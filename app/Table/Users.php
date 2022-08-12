@@ -120,14 +120,14 @@ class Users extends Table
     {
         $user = Users::findByUserId($id_user);
         App::getDb()->query('UPDATE `tmp_users` 
-            SET `nom`="'.strtoupper($nom).'",`prenom`="'.$prenom.'",`mail`="'.$mail.'",`level`="'.$level.'",`tel`="'.$tel.'",`salaire`="'.$salaire.'",`psw`="'.md5($psw).'" 
+            SET `nom`="'.strtoupper($nom).'",`prenom`="'.$prenom.'",`mail`="'.$mail.'",`level`="'.$level.'",`tel`="'.$tel.'",`salaire`="'.$salaire.'",`psw`="'.$psw.'" 
             WHERE id_user = "'.$user->id_user.'"');
     }
 
     public static function addUsers($nom,$prenom,$mail,$level,$tel,$salaire,$psw){
         
          App::getDb()->query('INSERT INTO `tmp_users`(`nom`, `prenom`, `mail`, `level`, `tel`, `salaire`, `psw`) 
-        VALUES ("'.strtoupper($nom).'","'.$prenom.'","'.$mail.'","'.$level.'","'.$tel.'","'.$salaire.'","'.md5($psw).'")');
+        VALUES ("'.strtoupper($nom).'","'.$prenom.'","'.$mail.'","'.$level.'","'.$tel.'","'.$salaire.'","'.$psw.'")');
     }
 
     public static function deleteUsers($id_user) {

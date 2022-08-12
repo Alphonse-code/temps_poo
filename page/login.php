@@ -9,7 +9,7 @@ if (isset($_POST['mail']) && isset($_POST['psw'])) {
     if (isset($result) && !empty($result)) {
         $user->setEmail($result->getEmail());
         $user->setPsw($result->getPsw());
-        if (MD5($_POST['psw']) == $user->getPsw()) {
+        if (password_verify($_POST['psw'], $user->getPsw())) {
             $_SESSION['user'] = [
                 'id' => $result->getIdUser(),
                 'nom' => $result->getNom(),
