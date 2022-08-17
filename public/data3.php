@@ -3,7 +3,7 @@
 use App\App;
 
 $sql = "SELECT
-   CONCAT(tmp_users.nom, tmp_users.prenom) as users,
+   CONCAT(tmp_users.nom, ' ',tmp_users.prenom) as users,
    
     SUM(tmp_prestation.total_minute) AS total_minute
 FROM

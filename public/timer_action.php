@@ -49,5 +49,11 @@ foreach ($total_minute as $tm) {
     $total_min = $tm->tot_min;
 }
 $coutmin = $co_par_min * $total_min;
-App\Table\Cout::insert_cout($id_user, $date, $coutmin);
+$existe = App\Table\Cout::selectByID_Date($id_user, $date);
+if(!$existe){
+    App\Table\Cout::insert_cout($id_user, $date, $coutmin);
+}
+else {
+    App\Table\Cout::update_cout($id_user, $date, $coutmin);
+}
 header('Location:Route.php?p=home&lang=' . $_SESSION['lang']);

@@ -79,5 +79,6 @@ class Prestation extends Table
         $total_min = "SELECT SUM(total_minute) as tot_min FROM tmp_prestation WHERE id_user='$id' AND date = '$date';";
         return App::getDb()->query($total_min); 
     }
+    
 
 }

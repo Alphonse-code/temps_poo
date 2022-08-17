@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function() {
 	getNotification();
 	setInterval(function(){ getNotification(); }, 20000);
@@ -17,7 +14,6 @@ function getNotification() {
 			url : "url.php",
 			type: "POST",
 			success: function(response, textStatus, jqXHR) {
-				
 				var response = jQuery.parseJSON(response);
 				if(response.result == true) {
 					var notificationDetails = response.notif;
@@ -36,7 +32,7 @@ function getNotification() {
 							notificationObj.close();
 						}, 15000);
 					};
-				} else {
+				} else { 
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown)	{}

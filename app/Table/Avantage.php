@@ -38,7 +38,7 @@ class Avantage extends Table
     public static function insert_avtg($nom, $montant)
     {
         $sql = "INSERT INTO `tmp_avantage` (`nom_avantage`, `montant_avantage`) VALUES ('$nom', $montant)";
-        var_dump($sql);
+       
         App::getDb()->query($sql);
     }
    
@@ -55,7 +55,7 @@ class Avantage extends Table
     public static function update_avantage($id_avantage, $nom_avantage,$motant_avantage)
     {
         $sql = "UPDATE `tmp_avantage` SET `nom_avantage` = '$nom_avantage', `montant_avantage` = $motant_avantage WHERE `id_avantage` = $id_avantage";
-       var_dump($sql);
+       
         App::getDb()->query($sql);
     }
 
