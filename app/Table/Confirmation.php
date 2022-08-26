@@ -38,11 +38,11 @@ class Confirmation extends Table
     }
     public function getNbValidation()
     {
-        return $this->$nb_validation
+        return $this->$nb_validation;
     }
     public function setNbValidation($nb_validation): self
     {
-        $this->nb_validation = $nb_validation
+        $this->nb_validation = $nb_validation;
         return $this;
     }
 

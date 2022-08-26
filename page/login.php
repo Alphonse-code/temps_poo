@@ -16,7 +16,11 @@ if (isset($_POST['mail']) && isset($_POST['psw'])) {
                 'prenom' => $result->getPrenom(),
                 'level' => $result->getLevel(),
             ];
-            header('location:Route.php?p=home&lang=fr');
+            if($_SESSION['user']['level'] == '2'){
+                header('location:Route.php?p=home&lang=fr');
+            }else{
+           header('Location:Route.php?p=dashboard&lang=fr');
+            }
         } else {
             $errors = 'Le Mot de passe saisie est incorrect.';
         }

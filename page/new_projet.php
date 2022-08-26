@@ -10,8 +10,20 @@ if (isset($_POST['save'])) {
     $date_debut = $_POST['date_debut'];
     $date_fin_theorique = $_POST['date_fin_theorique'];
     $date_fin_reel = $_POST['date_fin_reel'];
-   $result = App\Table\Projet::createProject($nom, $localisation,$date_debut,$date_fin_theorique,$date_fin_reel);
-    header('location: Route.php?p=list_projet');   
+    $rappel_minute = $_POST['rappel_minute'];
+   $result = App\Table\Projet::createProject($nom, $localisation,$date_debut,$date_fin_theorique,$date_fin_reel,$rappel_minute);
+   
+   $prjt = App\Table\Projet::findByName($nom,$date_debut);
+  
+    
+   foreach($prjt as $prj) {
+        $id = $prj->id_prj;
+        $rappel = $prj->rappel;
+   }
+   
+
+   App\Table\Prestation::insert_rappel_temps($id,$rappel);
+   header('location: Route.php?p=list_projet');   
 }
 ?>
 <!DOCTYPE html>
@@ -69,6 +81,10 @@ if (isset($_POST['save'])) {
                         <div class="form-group">
                             <label>Date fin réel</label>
                             <input type="date" value="" class="form-control" id="date_fin_reel" name="date_fin_reel">
+                        </div>
+                        <div class="form-group">
+                            <label>Temp de rappel <sub>(Minutes)</sub> </label>
+                            <input type="number" value="" class="form-control" name="rappel_minute">
                         </div>
                          	<input type="submit" class="btn btn-primary" name="save" value="submit">
                         

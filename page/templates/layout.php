@@ -53,11 +53,15 @@ setlocale(LC_ALL, 'fr_FR');
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar ">
                 <ul class="nav menu">
                     <li><img src="images/temps.png" width="250px" height="100px" alt="TEMPS"/> </li>
+                    <?php if ($_SESSION['user']['level'] == 2){ ?>
                     <li><a href="Route.php?p=home&lang=<?= $lg_url ?>"><span class="glyphicon glyphicon-home"></span> <?= $lang['s_home_pg'] ?></a></li>
-                <?php if (
+                    <?php } ?>
+                    
+                    <?php if (
                     $_SESSION['user']['level'] == 9 ||
                     $_SESSION['user']['level'] == 8
                 ) { ?>
+                    <li> <a href="Route.php?p=dashboard&lang=<?= $lg_url ?>"><span class="glyphicon glyphicon-dashboard"></span><?= $lang['s_dashboard'] ?></a></li>
                     <li><a href="Route.php?p=u_avantage&lang=<?= $lg_url ?>"><span class="glyphicon glyphicon-pencil"></span><?= $lang['s_avtg_pg'] ?></a></li>
                     <li><a href="Route.php?p=user_avtg&lang=<?= $lg_url ?>"><span class="glyphicon glyphicon-check"></span><?= $lang['s_avtg_usr_pg'] ?></a></li>
                     <li><a href="Route.php?p=temps_rappel&lang=<?= $lg_url ?>"><span class="glyphicon glyphicon-dashboard"></span><?= $lang['s_tmp_rpl'] ?></a></li>

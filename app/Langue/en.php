@@ -18,6 +18,7 @@ $lang = array(
     's_tsk_pg'=> 'TASK',
     's_usr_pg'=> 'USERS',
     's_stats_pg'=> 'STATISTICS',
+    's_dashboard'=> 'DASHBOARD',
     //--- fin sidebar ----
     // avantage 
     'list_avtg'=> 'List of user benefits',

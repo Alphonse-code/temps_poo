@@ -52,4 +52,6 @@ class Tache extends Table
     {
         App::getDb()->query("INSERT INTO tmp_user_prj (id_user, id_prj) VALUES ('$id_user','$id_prj')");
     }
+
+    
 }

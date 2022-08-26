@@ -10,10 +10,15 @@ class Projet extends Table
     private $date_fin_theorique;
     private $date_fin_reel;
     private $statut;
+    private $rappel;
 
     public function getIdPrj()
     {
         return $this->id_prj;
+    }
+    public function getRappel()
+    {
+        return $this->rappel;
     }
     public function getNom()
     {
@@ -60,22 +65,34 @@ class Projet extends Table
         return $this;
     }
 
+    public static function nom_projet($id)
+    {
+        return App::getDb()->query("SELECT nom FROM tmp_projets WHERE id_prj = $id", __CLASS__, true);
+    }
+    public static function findByName($nom,$date_debut)
+    {
+        return App::getDb()->query("SELECT * FROM `tmp_projets` WHERE `nom` ='$nom' AND `date_debut`='$date_debut'");
+    }
+    
     public static function findByProjectId($id_prj)
     {
         return App::getDb()->query('SELECT * FROM `tmp_projets` WHERE `id_prj` =' . $id_prj, __CLASS__, true);
     }
-    public static function createProject($nom,$localisation,$date_debut,$date_fin_theorique,$date_fin_reel)
+    public static function createProject($nom,$localisation,$date_debut,$date_fin_theorique,$date_fin_reel,$rappel_minute)
     {
-        $sql = "INSERT INTO `tmp_projets`(`nom`, `localisation`, `date_debut`, `date_fin_theorique`, `date_fin_reel`) 
-        VALUES ('$nom','$localisation','$date_debut','$date_fin_theorique','$date_fin_reel')";
+        $sql = "INSERT INTO `tmp_projets`(`nom`, `localisation`, `date_debut`, `date_fin_theorique`, `date_fin_reel`,`rappel`) 
+        VALUES ('$nom','$localisation','$date_debut','$date_fin_theorique','$date_fin_reel','$rappel_minute')";
          App::getDb()->query($sql);
     }
 
-    public static function updateProjet($id_prj,$nom,$localisation,$date_debut,$date_fin_theorique,$date_fin_reel)
+    public static function updateProjet($id_prj,$nom,$localisation,$date_debut,$date_fin_theorique,$date_fin_reel,$rappel_minute)
     {
        $projet = Projet::findByProjectId($id_prj);
-       $sql = "UPDATE `tmp_projets` SET `nom`='$nom',`localisation`='$localisation',`date_debut`='$date_debut',`date_fin_theorique`='$date_fin_theorique',`date_fin_reel`='$date_fin_reel' WHERE `id_prj`='$id_prj'";
+       $sql = "UPDATE `tmp_projets` SET `nom`='$nom',`localisation`='$localisation',`date_debut`='$date_debut',`date_fin_theorique`='$date_fin_theorique',`date_fin_reel`='$date_fin_reel',`rappel`= '$rappel_minute' WHERE `id_prj`='$id_prj'";
+       $sql1= "UPDATE `tmp_temps_rappel` SET `tps_rappel` = '$rappel_minute' WHERE `tmp_temps_rappel`.`id_prj`=$id_prj";
+       
        App::getDb()->query($sql);
+       App::getDb()->query($sql1);
        
     }
 

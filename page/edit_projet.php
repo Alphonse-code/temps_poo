@@ -11,7 +11,8 @@ if (isset($_POST['save'])) {
     $d_debut = $_POST['date_debut'];
     $df_theo = $_POST['date_fin_theorique'];
     $df_reel = $_POST['date_fin_reel'];
-    App\Table\Projet::updateProjet($id, $nom, $local, $d_debut, $df_theo, $df_reel);
+    $df_rapel = $_POST['rappel'];
+    App\Table\Projet::updateProjet($id, $nom, $local, $d_debut, $df_theo, $df_reel,$df_rapel );
     header('location: Route.php?p=list_projet');
 }
 ?>
@@ -68,6 +69,10 @@ if (isset($_POST['save'])) {
                         <div class="form-group">
                             <label>Date fin réel</label>
                             <input type="date" value="<?= $projet->getDateFin() ?>" class="form-control" id="date_fin_reel" name="date_fin_reel">
+                        </div> 
+                        <div class="form-group">
+                            <label>Temps rappel<sub>(minutes)</sub> </label>
+                            <input type="number" value="<?= $projet->getRappel() ?>" class="form-control"  name="rappel">
                         </div> 
                         <input type="submit" class="btn btn-primary" name="save" value="submit">
                     </form>

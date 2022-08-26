@@ -56,9 +56,17 @@ class Prestation extends Table
             return App::getDb()->query($sql);
     }
 
-    public static function insert_heur_debut($date, $id_user, $id_prj, $heure_debut)
+    // get temps de rappel
+    public static function rappel($id)
     {
-        $sql = "INSERT INTO tmp_prestation(`date`,`id_user`, `id_prj`,`heure_debut`) VALUES ('$date',$id_user,$id_prj,'$heure_debut')";
+        $sql = "SELECT tps_rappel FROM tmp_temps_rappel WHERE id_prj=$id";
+        return App::getDb()->query($sql);
+    }
+
+
+    public static function insert_heur_debut($date, $id_user, $id_prj, $heure_debut, $heure_fin,$total)
+    {
+        $sql = "INSERT INTO tmp_prestation(`date`,`id_user`, `id_prj`,`heure_debut`,`heure_fin`,`total_minute`) VALUES ('$date',$id_user,$id_prj,'$heure_debut','$heure_fin',$total)";
        
         App::getDb()->query($sql);
     }
@@ -79,6 +87,40 @@ class Prestation extends Table
         $total_min = "SELECT SUM(total_minute) as tot_min FROM tmp_prestation WHERE id_user='$id' AND date = '$date';";
         return App::getDb()->query($total_min); 
     }
-    
 
+    // rappel temps
+    public static function insert_rappel_temps($id_prj,$tps_rappel)
+    {
+        $sql = "INSERT INTO `tmp_temps_rappel` (`id_prj`, `tps_rappel`) VALUES ('$id_prj', '$tps_rappel');";
+        App::getDb()->query($sql);
+    }
+
+    // liste de personne evec le projet qu'il travail avec
+    public static function work_people()
+    {
+        $sql = "SELECT
+        tmp_users.nom,
+        tmp_users.prenom,
+        tmp_projets.nom 'prj_nom',
+        tmp_prestation.date 'daty',
+        tmp_prestation.heure_debut,
+        tmp_prestation.heure_fin
+    FROM
+        tmp_prestation
+    INNER JOIN tmp_projets ON tmp_prestation.id_prj = tmp_projets.id_prj
+    INNER JOIN tmp_users ON tmp_prestation.id_user = tmp_users.id_user
+    WHERE
+        tmp_prestation.date = CURRENT_DATE AND tmp_prestation.actif = 1";
+
+        return App::getDb()->query($sql);
+    }
+    public static function update_actif($heure_debut, $date)
+    {
+        App::getDb()->query("UPDATE `tmp_prestation` SET `actif` = '0' WHERE `heure_debut` = '$heure_debut' AND `date`='$date';");
+    }
+
+    public static function increment_confirmation($nb_confirmation, $date, $heure_debut)
+    {
+        App::getDb()->query("UPDATE `tmp_prestation` SET `nb_confirmation` = '$nb_confirmation' WHERE `date` = '$date' AND heure_debut='$heure_debut';");
+    }
 }

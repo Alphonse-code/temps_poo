@@ -1,5 +1,6 @@
 <?php
-date_default_timezone_set('Europe/Paris');
+//date_default_timezone_set('Europe/Paris');
+date_default_timezone_set('Indian/Antananarivo');
 $heure_fin = date('H:i:s');
 $date = date('Y-m-d');
 $id_user = $_SESSION['user']['id'];
@@ -24,7 +25,7 @@ $cout = null;
 foreach ($salair_user as $sl) {
     $karama = iconv('UTF-8', 'ISO-8859-1//IGNORE', $sl->salaire);
 }
-
+App\Table\Prestation::update_actif($heure_debut,$date);
 $cout_min = App\Table\Prestation::calcule_cout_minute(
     $date,
     $heure_debut,

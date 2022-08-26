@@ -82,6 +82,4 @@ class Notification extends Table
     public static function get_notificationsById($id) {
         return App::getDb()->query("SELECT * FROM tmp_notifications WHERE id_notif=".$id,__CLASS__,true);
     }
-
-
 }

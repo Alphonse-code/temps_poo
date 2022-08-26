@@ -14,6 +14,7 @@ function getNotification() {
 			url : "url.php",
 			type: "POST",
 			success: function(response, textStatus, jqXHR) {
+				
 				var response = jQuery.parseJSON(response);
 				if(response.result == true) {
 					var notificationDetails = response.notif;

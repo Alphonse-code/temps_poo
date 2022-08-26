@@ -85,6 +85,8 @@ if ($p === 'home') {
     require ROOT . '/page/update_avantage.php';
 } elseif ($p == 'new_avantage') {
     require ROOT . '/page/new_avantage.php';
+}elseif ($p == 'dashboard') {
+    require ROOT . '/page/dashboard.php';
 }
 
 $content = ob_get_clean();

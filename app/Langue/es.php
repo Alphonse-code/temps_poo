@@ -16,6 +16,7 @@ $lang = array(
     's_tsk_pg'=> 'MANCHA',
     's_usr_pg'=> 'USUARIA',
     's_stats_pg'=> 'ESTADÍSTICAS',
+    's_dashboard'=> 'DASHBOARD',
     //--- fin sidebar ---
     'list_avtg'=> 'Lista de beneficios para el usuario',
     'btn_new_avtg'=> 'Nueva ventaja',
