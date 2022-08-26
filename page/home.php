@@ -14,9 +14,10 @@ if (isset($_POST['save'])) {
     $heure_debut = date('H:i:s');
     $_SESSION['user']['heure_debut'] = $heure_debut;
    $rappel = App\Table\Prestation::rappel($id_prj);
-   foreach($rappel as $r){
+   
+   foreach($rappel as $r)
     $rpl = $r->tps_rappel;
-   }
+   
    $heure_fin = date("H:i:s", strtotime("+$rpl minutes"));
     App\Table\Prestation::insert_heur_debut($date,$id_user,$id_prj,$heure_debut,$heure_fin,$rpl); 
     App\Table\Tache::newTask($id_user, $id_prj);

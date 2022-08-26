@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors', '1');
-error_reporting(E_ALL);
+//ini_set('display_errors', '1');
+//error_reporting(E_ALL);
 define('ROOT', dirname(__DIR__));
 session_start();
 if (!isset($_SESSION['user'])) {
@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
 }
 require '../app/Autoloader.php';
 App\Autoloader::register();
+
 if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = 'fr';
 }
@@ -45,8 +46,6 @@ if ($p === 'home') {
     require ROOT . '/page/logout.php';
 } elseif ($p == 'u_avantage') {
     require ROOT . '/page/avantage.php';
-} elseif ($p == 'temps_rappel') {
-    require ROOT . '/page/temps_rappel.php';
 } elseif ($p == 'cout_min') {
     require ROOT . '/page/cout_min.php';
 } elseif ($p == 'user_projet') {
