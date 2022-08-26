@@ -20,11 +20,11 @@ foreach ($result as $res) {
     $rows[] = $data;
     $nextime =date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s')) + ($res->tps_rappel)/60 * 3600);
 
-    App\Table\Prestation::increment_confirmation($totalNotification, $date, $_SESSION['user']['heure_debut']);
-
     App\Table\Rappels::updateNotification($res->id, $nextime);
     
     $totalNotification++;
+    App\Table\Prestation::increment_confirmation($totalNotification, $date, $_SESSION['user']['heure_debut']);
+
 } 
 $array['notif'] = $rows;
 $array['count'] = $totalNotification;
