@@ -5,8 +5,8 @@ if (empty($_SESSION['user'])) {
 }
 if (isset($_POST['save'])) {
     session_start();
-    date_default_timezone_set('Indian/Antananarivo');
-    //date_default_timezone_set('Europe/Paris');
+    //date_default_timezone_set('Indian/Antananarivo');
+    date_default_timezone_set('Europe/Paris');
     $id_prj = $_POST['id_prj'];
     $id_user = $_SESSION['user']['id'];
     $_SESSION['user']['id_prj'] = $id_prj;

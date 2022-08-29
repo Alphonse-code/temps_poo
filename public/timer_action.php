@@ -1,6 +1,6 @@
 <?php
-//date_default_timezone_set('Europe/Paris');
-date_default_timezone_set('Indian/Antananarivo');
+date_default_timezone_set('Europe/Paris');
+//date_default_timezone_set('Indian/Antananarivo');
 $heure_fin = date('H:i:s');
 $date = date('Y-m-d');
 $id_user = $_SESSION['user']['id'];

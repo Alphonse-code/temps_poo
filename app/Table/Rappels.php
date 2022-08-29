@@ -77,8 +77,6 @@ class Rappels extends Table
         App::getDb()->query("DELETE FROM tmp_temps_rappel  WHERE id= $id");
     }
 
-   
-
     public static function get_notificationsById($id) {
         return App::getDb()->query("SELECT * FROM tmp_temps_rappel WHERE id=".$id,__CLASS__,true);
     }

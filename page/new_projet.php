@@ -21,7 +21,6 @@ if (isset($_POST['save'])) {
         $rappel = $prj->rappel;
    }
    
-
    App\Table\Prestation::insert_rappel_temps($id,$rappel);
    header('location: Route.php?p=list_projet');   
 }

@@ -12,7 +12,7 @@ $date = date('Y-m-d');
 $heure_debut= date('H:i:s');
 
 $totalNotification = 0;
-foreach ($result as $res) {
+foreach ($result as $res) { 
     $data['title'] = "Demmande de confirmation";
     $data['message'] = "Travaillez-vous toujours sur le projet \n\t".strtoupper($nom->getNom());
     $data['icon'] = 'https://icon-library.com/images/notifications-icon-png/notifications-icon-png-15.jpg';
